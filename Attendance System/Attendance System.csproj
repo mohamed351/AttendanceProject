@@ -210,6 +210,10 @@
     <Compile Include="Migrations\202003111417286_Version1.Designer.cs">
       <DependentUpon>202003111417286_Version1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003261452063_modifiedDateinPermission.cs" />
+    <Compile Include="Migrations\202003261452063_modifiedDateinPermission.Designer.cs">
+      <DependentUpon>202003261452063_modifiedDateinPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -591,6 +595,7 @@
     <Content Include="Views\Permision\Index.cshtml" />
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Manage\ViewMyAttend.cshtml" />
+    <Content Include="Views\Permision\SendPermission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -613,6 +618,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003111417286_Version1.resx">
       <DependentUpon>202003111417286_Version1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003261452063_modifiedDateinPermission.resx">
+      <DependentUpon>202003261452063_modifiedDateinPermission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

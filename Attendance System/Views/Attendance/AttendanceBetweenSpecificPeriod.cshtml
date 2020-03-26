@@ -1,7 +1,7 @@
 ﻿@model List<Attendance_System.Models.AttendSearchResultViewModel>
 
 @{
-    ViewBag.Title = "Attendance Between Periods";
+    ViewBag.Title = "Attendance Within a Period";
 }
 
 <h3>Attendance between a Specific Period</h3>
@@ -47,13 +47,24 @@
             @{
                 if (Model != null)
                 {
-                    foreach (var attendance in Model)
+                    if (Model.Count > 0)
+                    {
+                        foreach (var attendance in Model)
+                        {
+                            <tr>
+                                <td>@attendance.StudentName</td>
+                                <td>@attendance.NumOfLate</td>
+                                <td>@attendance.NumOfAbsent</td>
+                                <td>@attendance.Status</td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td>@attendance.StudentName</td>
-                            <td>@attendance.NumOfLate</td>
-                            <td>@attendance.NumOfAbsent</td>
-                            <td>@attendance.Status</td>
+                            <td colspan="4">
+                                No Attendance Yet
+                            </td>
                         </tr>
                     }
                 }
@@ -68,7 +79,7 @@
     <script>
       $( function() {
         $( "#datepicker1" ).datepicker({
-            dateFormat: "dd/mm/yy",
+            dateFormat: "mm/dd/yy",
             showStatus: true,
             showWeeks: true,
             currentText: 'Now',
@@ -80,7 +91,7 @@
       });
         $( function() {
             $( "#datepicker2" ).datepicker({
-            dateFormat: "dd/mm/yy",
+            dateFormat: "mm/dd/yy",
             showStatus: true,
             showWeeks: true,
             currentText: 'Now',

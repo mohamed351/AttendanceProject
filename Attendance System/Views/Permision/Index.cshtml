@@ -1,0 +1,72 @@
+﻿@model Attendance_System.Models.Permission
+@{
+    ViewBag.Title = "Permissions";
+}
+<div class="container">
+    <h3>Permissions</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Cause</th>
+                <th>Student Name</th>
+                <th>Department</th>
+                <th>Approved</th>
+                <th>Sending Date</th>
+                <th>Permission Date</th>
+                <th>Approvement Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var per in ((List<Attendance_System.Models.Permission>)ViewBag.pers))
+                {
+                    <tr>
+                        <td hidden>@per.Id</td>
+                        <td>@per.CauseOfAbsence</td>
+                        @{
+                            foreach (var user in (List<Attendance_System.Models.ApplicationUser>)ViewBag.users)
+                            {
+                                if (user.Id == per.UserId)
+                                {
+                                    <td hidden>@user.Id</td>
+                                    <td>@user.Name</td>
+                                    <td>@user.DepartmentId</td>
+                                }
+                            }
+                        }
+                        <td>
+                            @{
+                                if (per.IsApproved == false)
+                                {
+                                    <input id="inApprove" type="checkbox" checked="@per.IsApproved" />
+                                }
+                                else
+                                {
+                                    <p style="cursor: not-allowed;">Approved</p>
+                                }
+                            }
+                        </td>
+                        <td>@per.SendingDate</td>
+                        <td>@per.PermissionDate</td>
+                        <td>@per.ApprovementDate</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@section sendAjax{
+    <script>
+        // sending an ajax request using jquery
+        const approveChck = document.querySelector('#inApprove');
+        const adminName = document.querySelector('#username');
+        const perId = approveChck.parentElement.parentElement.children[0].innerText;
+        const stId = approveChck.parentElement.parentElement.children[2].innerText;
+
+        approveChck.onchange = () => {
+            //const perData = {admin: adminName.innerText.split(' ')[1],stId: stId,perId: perId,approved: approveChck.checked};
+            $.ajax('/Permision/ApprovePermission?perId=' + perId, { success: function () { location.reload(); } });
+        };
+    </script>
+}

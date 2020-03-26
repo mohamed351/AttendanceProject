@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono&display=swap');
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+
+    background: #5c82f3;  
+background: -webkit-linear-gradient(to right, #2948ff, #5c82f3);  
+background: linear-gradient(to right, #2948ff, #5c82f3);  
+
+}
+
+.container{
+display: inline-flex;
+ margin-top: 16vh;
+}
+.image-rounded{
+    margin-bottom: 20px;
+}
+.login-container{
+ 
+    
+    padding:20px;
+}
+.image-rounded{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    justify-content: center;
+    border-radius: 50%;
+}
+.control-group{
+    margin: 10px 0;
+}
+.login-container{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.control-group label{
+    display: block;
+    color:#fff;
+    margin: 0.2rem 0;
+}
+.control-group  input{
+    font-size:21px;
+}
+.login-shadow{
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding:2.5rem;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.control-group  input:not([type='checkbox']){
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom:1px solid #333;
+    padding:5px;
+    font-family: Raleway;
+    color:#37454d;
+
+}
+.control-group  input::placeholder{
+    color:#fff;
+    font-family: Raleway;
+}
+input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    border:1px solid #050a50;
+    width:1.2rem;
+    height:1.2rem;
+    outline:25px;
+    border-radius:50%;
+    vertical-align:bottom;
+
+}
+    input[type='checkbox']:checked {
+        background: -webkit-linear-gradient(#097970, #1900ff);
+        background: linear-gradient(#097970, #1900ff);
+    }
+.control-group  input:focus::placeholder{
+  color:transparent;
+}
+.btn-submit{
+ width: 100%;
+ background-color: #344e74;
+ border: none;
+ color:#fff;
+ padding:0.5rem;
+ font-family: Raleway;
+ border-radius: 20px;
+}
+.login-links  {
+    color:#fff;
+    font-family: "Raleway";
+    
+}
+.login-links a{
+    color:#062555;
+    text-decoration: none;
+    font-family: "Raleway";
+}
+.login-links a:hover{
+    color:#37454d;
+}
+.btn-submit:hover{
+    background-color: #062555;
+}
+.remember{
+    color:#fff;
+    font-family:Raleway;
+}
+.box-container{
+    margin:1rem 0;
+}
+.my-text-danger {
+    color: #462020;
+    display: block;
+    font-family: "PT Mono";
+    font-size:12px;
+}

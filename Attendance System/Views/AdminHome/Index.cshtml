@@ -1,0 +1,99 @@
+﻿@using Attendance_System.IdentityExtentions
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container" style="margin-top:20px">
+    <h2>Administration</h2>
+    <h3>Hello  @User.Identity.GetName()</h3>
+
+  
+    <div class="jumbotron">
+     <div class="row">
+
+         <div class="col-md-3">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h3 class="panel-title">  Users </h3>
+                 </div>
+                 <div class="panel-body">
+                      
+                     <a class="btn btn-success text-center" href="@Url.Action("Index","Users",null)"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+      
+                     
+                  
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-md-3">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h3 class="panel-title"> Departments </h3>
+                 </div>
+                 <div class="panel-body">
+                     <a class="btn btn-success" href="@Url.Action("Index","Departments",null)"><i class="fa fa-users" aria-hidden="true"></i> Departments</a>
+
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-md-3">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h3 class="panel-title"> Permissions </h3>
+                 </div>
+                 <div class="panel-body">
+                     <a class="btn btn-success" href="@Url.Action("Index","Permision",null)"><i class="fa fa-star" aria-hidden="true"></i> Permission</a>
+
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-md-3">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h3 class="panel-title"> Attendance</h3>
+                 </div>
+                 <div class="panel-body">
+                     <h5 id="attend" class="btn btn-success" style="cursor: pointer;"><i class="fa fa-sort-down" id="iconDown"></i> Attendance</h5>
+                     <div id="dropdown" style="border: 1px solid #2c3e50;border-radius: 5px;position: absolute;box-shadow: 1px 1px 3px #ddd;padding: 10px;background: #fff;color: #000; display: none;">
+                         <a class="btn btn-success" href="@Url.Action("SpecificDay","Attendance",null)"><i class="fa fa-calendar" aria-hidden="true"></i> Specific Day</a>
+                         <a class="btn btn-success" href="@Url.Action("AttendanceBetweenSpecificPeriod","Attendance",null)"><i class="fa fa-calendar" aria-hidden="true"></i> Between Period</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+
+      
+    </div>
+
+
+
+</div>
+
+<script>
+    window.onload = () => {
+        const attend = document.querySelector('#attend');
+        const dropdown = document.querySelector('#dropdown');
+        const dropBtn = document.querySelector('#iconDown');
+
+        attend.onclick = () => {
+            if (dropdown.style.display === 'none') {
+                dropdown.style.display = "block";
+                dropBtn.classList.remove('fa-sort-down');
+                dropBtn.classList.add('fa-sort-up');
+            }
+            else {
+                dropdown.style.display = "none";
+                dropBtn.classList.remove('fa-sort-up');
+                dropBtn.classList.add('fa-sort-down');
+            }
+        }
+    }
+</script>

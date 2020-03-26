@@ -1,0 +1,28 @@
+﻿@model Attendance_System.Models.Attendance
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>IsAbsent</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @if (Model == null)
+            {
+                <th>No Attendance Found for You</th>
+            }
+            else
+            {
+                <td>@Model.Date</td>
+                <td>@Model.Arrival</td>
+                <td>@Model.Departure</td>
+                <td>@Model.IsAbsent</td>
+            }
+        </tr>
+    </tbody>
+</table>

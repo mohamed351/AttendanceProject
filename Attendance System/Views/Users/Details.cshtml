@@ -1,0 +1,171 @@
+﻿@model Attendance_System.Models.ApplicationUser
+@{
+    ViewBag.Title = "Details";
+}
+
+<ul class="nav nav-tabs" style="margin-top:25px">
+    <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Profile</a></li>
+    @if (Model.Department != null)
+    {
+    <li class=""><a href="#Department" data-toggle="tab" aria-expanded="false">Department</a></li>
+    }
+    @if (ViewBag.RoleName == "Student")
+    {
+        <li class=""><a href="#Permission" data-toggle="tab" aria-expanded="false">Permission</a></li>
+        <li class=""><a href="#Attendance" data-toggle="tab" aria-expanded="false">Attendance</a></li>
+    }
+
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="profile">  
+
+        <div class="panel panel-primary mt-5">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Name : @Model.Name</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name) :
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email) :
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address) :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName) :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumber) :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateOfBirth) :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DateOfBirth)
+                    </dd>
+
+                    <dt>
+                        Role :
+                    </dt>
+
+                   <dd>
+                       @ViewBag.RoleName
+                   </dd>
+
+
+
+
+                    
+
+                   
+
+                </dl>
+            </div>
+        </div>
+
+    </div>
+    @if (Model.Department != null)
+    {
+    <div class="tab-pane fade" id="Department">
+
+        <div class="panel panel-primary mt-5">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Department : @Model.Department.Name</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                  
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department.Name) :
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department.Name)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department.NickName) :
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department.NickName)
+                    </dd>
+
+                   
+                    <dt>
+                       <a class="btn btn-success"> Students</a>
+                    </dt>
+
+
+                </dl>
+            </div>
+        </div>
+        
+       </div>
+
+    }
+
+
+    <div class="tab-pane fade" id="Permission">
+
+        <div class="panel panel-primary mt-5">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Permissions</h3>
+            </div>
+            <div class="panel-body">
+             
+                Not Implmented
+               
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="tab-pane fade" id="Attendance">
+
+        <div class="panel panel-primary mt-5">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Attendance</h3>
+            </div>
+            <div class="panel-body">
+
+                Not Implmented
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

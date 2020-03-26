@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Attendance_System.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Users";
+}
+@section styles
+{
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+}
+<h2>Users</h2>
+@Html.ActionLink("Create new User", "Create", null, new { @class = "btn btn-success" })
+<hr />
+<table id="tbl" class="table table-bordered table-hover">
+    <thead>
+     
+        <tr>
+            <th>Name</th>
+           <th>Email</th>
+            <th>PhoneNumber</th>
+       
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+      
+
+    </tbody>
+</table>
+
+@section scripts
+{
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+    <script>
+
+ 
+        var tbl = $("#tbl").DataTable({
+            lengthChange:false,
+            info: true,
+            searching: true,
+            search: true,
+            ordering: false,
+            responsive: true,
+            searchable: true,
+            processing: true,
+            serverSide: true,
+            language: {
+                search: $("#txtSearch").val(),
+                processing: $("#txtprocess").val(),
+                paginate: {
+                    next: "Next",
+                    previous: "Pervious"
+                }
+            },
+            ajax: {
+                url: "/Users/GetUsers",
+                async: true,
+                dataSrc: function (json) {
+
+                    console.log(json);
+                    return json.data;
+                }
+              
+
+
+            },
+            columns: [{ data: "Name" }, { data: "Email" }, { data: "PhoneNumber" }, { data: "Address" }, {
+                data: "Id", render: function (data) {
+                    return `<a class="btn btn-success" href="/Users/Edit/${data}"> ${"Edit"} </a>
+                       
+                          <a class ="btn btn-primary" href="/Users/Details/${data}"> ${"Details"} </a>
+                          <a class ="btn btn-danger" href="/Users/Delete/${data}"> ${"Delete"} </a>
+                        `
+                         
+
+                        
+                }
+            }]
+           
+
+
+
+
+
+
+        });
+
+
+    </script>
+ }

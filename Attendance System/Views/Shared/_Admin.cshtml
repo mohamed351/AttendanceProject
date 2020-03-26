@@ -1,0 +1,5 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <li><a href="@Url.Action("Index","AdminHome")">Home Panel</a></li>
+}

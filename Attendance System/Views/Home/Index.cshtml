@@ -1,0 +1,57 @@
+﻿@using Attendance_System.IdentityExtentions
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Attendance System</title>    
+    @Styles.Render("~/Content/css")    
+    <link href="~/Content/bootstrap-lumen.min.css" rel="stylesheet" />
+</head>
+<body>    
+    <div class="banner">        
+        <div class="container-main">
+            <h3>AMRY For Software Development</h3>
+            @if (!User.Identity.IsAuthenticated)
+            {
+            @Html.ActionLink("LOGIN", "Login", "Account", null, new { @class = "btn btn-success" })
+            }
+            else
+            {
+                if (User.IsInRole("Security"))
+                {
+                   <h2>Security</h2>
+                <h4>Hello @User.Identity.GetName()</h4>
+                  <a class="btn btn-success" href="#"> Security Panel</a>
+                  
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    <h2>Admin</h2>
+                    <h4>Hello @User.Identity.GetName()</h4>
+                    @Html.ActionLink("Admin-Panel","Index","AdminHome",null,new {@class="btn btn-success" })
+
+                }
+                else if (User.IsInRole("Student"))
+                {
+                    <h2>Student</h2>
+                    <h4>Hello @User.Identity.GetName()</h4>
+                    <a class="btn btn-success" href="#"> Student Panel</a>
+
+
+                }
+            }
+        </div>
+    </div> 
+
+    <script>
+        const banner = document.querySelector('.banner');
+        banner.style.height = window.innerHeight + "px";
+    </script>
+</body>
+</html>

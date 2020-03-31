@@ -1,0 +1,86 @@
+﻿@model Attendance_System.ViewModels.SecurityAttendenceViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Attendence</h2>
+
+<br />
+<div class="jumbotron" style="padding: 15px 20px 0 20px !important; margin-bottom: 0 !important;">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    @*<label class="control-label">Department</label>*@
+                    <select name="DeptId" id="DeptId" class="form-control ">
+                        @{
+                            foreach (var department in Model.Departments)
+                            {
+                                <option value="@department.Id">@department.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @*<label class="control-label col-md-push-5">Attendence Type</label>*@
+                    <select name="attendType" id="attendType" class="form-control">
+                        <option value="1">Arrival</option>
+                        <option value="2">Departue</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input class="btn btn-success" type="button" id="btnSubmit" value="Show List" />
+            </div>
+        </div>
+    }
+</div>
+<br />
+
+
+<div id="stdList"></div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").on("click", function () {
+                var formData = new FormData();
+                formData.append("DeptId", $("#DeptId").val());
+                formData.append("attendType", $("#attendType").val());
+                $.ajax({
+                    url: "/Security/_Index",
+                    type: 'POST',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (response) {
+                        $("#stdList").html(response);
+
+                        $("#students .getStd").on("click", function () {
+                            var std = $(this);
+                            var formData = new FormData();
+                            formData.append("stdId", $(this).attr("stdId"));
+                            formData.append("attendType", $("#attendType").val());
+                            $.ajax({
+                                url: "/Security/Attendence",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: formData,
+                                success: function () {
+                                    std.remove();
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

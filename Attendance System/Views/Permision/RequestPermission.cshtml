@@ -1,0 +1,58 @@
+﻿@model Attendance_System.Models.Permission
+@{
+    ViewBag.Title = "RequestPermission";
+}
+@section styles
+{
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+}
+
+
+@using (Html.BeginForm("RequestPermission", "permision", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h2>RequestPermission</h2>
+    <div class="form-horizontal">
+        <h4>Permission Request</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PermissionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PermissionDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.PermissionDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CauseOfAbsence, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.CauseOfAbsence, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CauseOfAbsence, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send Permission" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@Html.ActionLink("Attentance", "studentprofile", "users", null, new { @class = "btn btn-success" })
+@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#PermissionDate").datepicker()
+        });
+    </script>
+}
+

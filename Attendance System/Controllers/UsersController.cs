@@ -22,7 +22,7 @@ namespace Attendance_System.Controllers
             context = new ApplicationDbContext();
             users = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             role = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-           
+
 
         }
         public ActionResult Index()
@@ -48,13 +48,13 @@ namespace Attendance_System.Controllers
         }
         public ActionResult Details(string ID)
         {
-            if(ID == null)
+            if (ID == null)
             {
                 throw new HttpException(400, "Bad Request");
             }
             var users = context.Users.Include(a => a.Roles)
             .Include(a => a.Department).FirstOrDefault(a => a.Id == ID);
-            if(users == null)
+            if (users == null)
             {
                 throw new HttpException(404, "Not Found");
             }
@@ -68,7 +68,7 @@ namespace Attendance_System.Controllers
             return View(users);
 
         }
-       
+
 
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -89,7 +89,7 @@ namespace Attendance_System.Controllers
 
                 };
 
-              IdentityResult Result =  users.Create(user, viewModel.Password);
+                IdentityResult Result = users.Create(user, viewModel.Password);
                 if (Result.Succeeded)
                 {
                     users.AddToRole(user.Id, viewModel.RoleId);
@@ -108,18 +108,18 @@ namespace Attendance_System.Controllers
         {
             if (ID == null)
             {
-                throw new HttpException(400,"Bad Request");
+                throw new HttpException(400, "Bad Request");
             }
 
             ApplicationUser user = users.FindById(ID);
             if (user == null)
             {
-                
+
                 throw new HttpException(404, "User Not Found ");
 
             }
 
-            
+
             EditUserViewModel edit = new EditUserViewModel()
             {
                 Address = user.Address,
@@ -139,7 +139,7 @@ namespace Attendance_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditUserViewModel viewModel)
         {
-            
+
             if (ModelState.IsValid)
             {
                 ApplicationUser u = users.FindById(viewModel.ID);
@@ -175,7 +175,7 @@ namespace Attendance_System.Controllers
         public ActionResult GetDepartment()
         {
 
-            return PartialView("_SelectDepartment",context.Departments.ToList());
+            return PartialView("_SelectDepartment", context.Departments.ToList());
         }
 
         public ActionResult GetDepartmentWithID(int? ID)
@@ -187,17 +187,17 @@ namespace Attendance_System.Controllers
 
         public ActionResult Delete(string ID)
         {
-            if(ID == null)
+            if (ID == null)
             {
-               throw new  HttpException(400,"Bad Request");
+                throw new HttpException(400, "Bad Request");
             }
-          ApplicationUser user =   context.Users.SingleOrDefault(a => a.Id == ID);
-            if(user == null)
+            ApplicationUser user = context.Users.SingleOrDefault(a => a.Id == ID);
+            if (user == null)
             {
                 throw new HttpException(404, "Not Found");
 
             }
-            
+
             return View(user);
         }
         [HttpPost]
@@ -221,8 +221,19 @@ namespace Attendance_System.Controllers
             return RedirectToAction("Index");
 
         }
-     
-      
 
+
+
+        [Authorize(Roles = "Student")]
+        public ActionResult StudentProfile()
+        {
+            var userID = User.Identity.GetUserId();
+            ViewBag.id = userID;
+
+            IEnumerable<Attendance> attendances = context.Attendance.Where(a => a.StudentId == userID).ToList();
+            return View(attendances);
+        }
+
+        
     }
 }

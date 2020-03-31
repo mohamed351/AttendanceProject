@@ -19,30 +19,31 @@
             <h3>AMRY For Software Development</h3>
             @if (!User.Identity.IsAuthenticated)
             {
-            @Html.ActionLink("LOGIN", "Login", "Account", null, new { @class = "btn btn-success" })
+                @Html.ActionLink("LOGIN", "Login", "Account", null, new { @class = "btn btn-success" })
             }
             else
             {
                 if (User.IsInRole("Security"))
                 {
-                   <h2>Security</h2>
-                <h4>Hello @User.Identity.GetName()</h4>
-                  <a class="btn btn-success" href="#"> Security Panel</a>
-                  
+                    <h2>Security</h2>
+                    <h4>Hello @User.Identity.GetName()</h4>
+                    <a class="btn btn-success" href="#"> Security Panel</a>
+
                 }
                 else if (User.IsInRole("Admin"))
                 {
                     <h2>Admin</h2>
                     <h4>Hello @User.Identity.GetName()</h4>
-                    @Html.ActionLink("Admin-Panel","Index","AdminHome",null,new {@class="btn btn-success" })
+                    @Html.ActionLink("Admin-Panel", "Index", "AdminHome", null, new { @class = "btn btn-success" })
 
                 }
                 else if (User.IsInRole("Student"))
                 {
                     <h2>Student</h2>
                     <h4>Hello @User.Identity.GetName()</h4>
-                    <a class="btn btn-success" href="/Manage/Index">Student Panel</a>
-                    <a class="btn btn-success" href="/Permision/SendPermission">My Permissions</a>
+                    <a class="btn btn-success" href="/users/studentprofile">My Attentance</a>
+                    <a class="btn btn-success" href="/Permision/MyPermissions">My Permissions</a>
+                    <a class="btn btn-success" href="/Permision/Requestpermission">Request Permission</a>
                 }
             }
         </div>

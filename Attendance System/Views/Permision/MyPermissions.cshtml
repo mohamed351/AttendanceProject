@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Attendance_System.Models.Permission>
+@{
+    ViewBag.Title = "MyPermissions";
+}
+
+<h2>MyPermissions</h2>
+
+<table id="tbl" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>PermissionDate</th>
+            <th>CauseOfAbsence</th>
+            <th>IsApproved</th>
+            <th>ApprovementDate</th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.PermissionDate</td>
+                <td>@item.CauseOfAbsence</td>
+                <td>@item.IsApproved</td>
+                <td>@item.ApprovementDate</td>
+                <td>@item.Admin</td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+@Html.ActionLink("Attentance", "studentprofile", "users", null, new { @class = "btn btn-success" })
+@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })

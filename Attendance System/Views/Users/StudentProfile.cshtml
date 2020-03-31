@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Attendance_System.Models.Attendance>
+@{
+    ViewBag.Title = "StudentProfile";
+}
+
+<h2>@User.Identity.GetName() Attentance</h2>
+
+<table id="tbl" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date.Day-@item.Date.Month-@item.Date.Year</td>
+                @if (item.IsAbsent)
+                {
+                    <td>Absent</td>
+                    <td>Absent</td>
+                }
+                else
+                {
+                    <td>@item.Arrival.TimeOfDay</td>
+                    <td>@item.Departure.TimeOfDay</td>
+                }
+
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+
+@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
+@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })

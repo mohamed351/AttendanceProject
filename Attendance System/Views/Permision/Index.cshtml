@@ -14,6 +14,7 @@
                 <th>Sending Date</th>
                 <th>Permission Date</th>
                 <th>Approvement Date</th>
+                <th>Admin</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +50,10 @@
                         <td>@per.SendingDate</td>
                         <td>@per.PermissionDate</td>
                         <td>@per.ApprovementDate</td>
+                        @if(@per.Admin != null)
+                        {
+                            <td>@per.Admin</td>
+                        }
                     </tr>
                 }
             }

@@ -54,9 +54,6 @@ namespace Attendance_System
                
                 user.Create(defaultAdmin, "admin@123456789");
                 user.AddToRole(defaultAdmin.Id, "Admin");
-
-
-
             }
 
         }

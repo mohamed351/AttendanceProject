@@ -47,13 +47,14 @@ namespace Attendance_System.Controllers
             int lateCount = 0;
             int absentCount = 0;
             string status = "Good";
-            foreach (var st in db.Users.ToList())
+            var sts = db.Users.Where(user => user.DepartmentId != null);
+            foreach (var st in sts.ToList())
             {
                 foreach (var at in attend)
                 {
                     if (st.Id == at.StudentId)
                     {
-                        if (at.Arrival.Date.TimeOfDay.Hours > at.Date.TimeOfDay.Hours)
+                        if (at.Arrival.TimeOfDay > Convert.ToDateTime("03-18-2020 09:00:00.400").TimeOfDay)
                         {
                             lateCount++;
                         }
@@ -63,18 +64,21 @@ namespace Attendance_System.Controllers
                         }
                     }
                 }
-                if (lateCount > 5 && absentCount > 3)
+                if(attend.Count() > 0)
                 {
-                    status = "Bad";
+                    if (lateCount > 5 && absentCount > 3)
+                    {
+                        status = "Bad";
+                    }
+                    AttendSearchResultViewModel asr = new AttendSearchResultViewModel
+                    {
+                        StudentName = st.Name,
+                        NumOfAbsent = absentCount,
+                        NumOfLate = lateCount,
+                        Status = status
+                    };
+                    all.Add(asr);
                 }
-                AttendSearchResultViewModel asr = new AttendSearchResultViewModel
-                {
-                    StudentName = st.Name,
-                    NumOfAbsent = absentCount,
-                    NumOfLate = lateCount,
-                    Status = status
-                };
-                all.Add(asr);
             }
 
             ViewBag.depts = db.Departments.ToList();

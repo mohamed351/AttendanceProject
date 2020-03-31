@@ -46,7 +46,7 @@ namespace Attendance_System.Controllers
         public ActionResult SendPermission(Permission permission)
         {
             var preExistPerm = db.Permissions.FirstOrDefault(per => per.PermissionDate == permission.PermissionDate);
-            if(preExistPerm == null)
+            if (preExistPerm == null)
             {
                 permission.SendingDate = DateTime.Now;
                 permission.UserId = User.Identity.GetUserId();
@@ -57,6 +57,48 @@ namespace Attendance_System.Controllers
             }
             return Content("You have already taken permission in that day");
         }
+        [Authorize(Roles = "Student")]
+        public ActionResult RequestPermission()
+        {
+
+            return View();
+        }
+
+        [Authorize(Roles = "Student")]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult RequestPermission(Permission permission)
+        {
+            if (ModelState.IsValid)
+            {
+                Permission Stu_permission = db.Permissions.FirstOrDefault(record => record.PermissionDate == permission.PermissionDate);
+                if (Stu_permission == null)
+                {
+                    permission.UserId = User.Identity.GetUserId();
+                    permission.SendingDate = DateTime.Now;
+                    permission.ApprovementDate = null;
+                    db.Permissions.Add(permission);
+                    db.SaveChanges();
+                    return RedirectToAction("MyPermissions");
+                }
+                else
+                {
+                    return Content("Duplicated Request");
+                }
+            }
+            return View(permission);
+        }
+
+        [Authorize(Roles = "Student")]
+        public ActionResult MyPermissions()
+        {
+            var userID = User.Identity.GetUserId();
+            ViewBag.id = userID;
+
+            IEnumerable<Permission> permissions = db.Permissions.Where(a => a.UserId == userID).ToList();
+            return View(permissions);
+        }
+
 
         [Authorize(Roles = "Student")]
         public ActionResult Cancel(string id)
@@ -64,7 +106,7 @@ namespace Attendance_System.Controllers
             int perId = Convert.ToInt32(id);
             var permission = db.Permissions.FirstOrDefault(per => per.Id == perId);
 
-            if(permission != null)
+            if (permission != null)
             {
                 db.Permissions.Remove(permission);
                 db.SaveChanges();

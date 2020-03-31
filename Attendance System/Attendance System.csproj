@@ -596,6 +596,9 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Manage\ViewMyAttend.cshtml" />
     <Content Include="Views\Permision\SendPermission.cshtml" />
+    <Content Include="Views\Users\StudentProfile.cshtml" />
+    <Content Include="Views\Permision\RequestPermission.cshtml" />
+    <Content Include="Views\Permision\MyPermissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

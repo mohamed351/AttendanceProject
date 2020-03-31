@@ -326,40 +326,6 @@ F:\AttendanceMvcProject\Attendance System\bin\roslyn\VBCSCompiler.exe.config
 F:\AttendanceMvcProject\Attendance System\bin\Attendance System.dll.config
 F:\AttendanceMvcProject\Attendance System\bin\Attendance System.dll
 F:\AttendanceMvcProject\Attendance System\bin\Attendance System.pdb
-F:\AttendanceMvcProject\Attendance System\bin\Antlr3.Runtime.dll
-F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.dll
-F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.SqlServer.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.Agent.Intercept.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.DependencyCollector.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.PerfCounterCollector.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.ServerTelemetryChannel.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.Web.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.WindowsServer.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.ApplicationInsights.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Core.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Owin.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Host.SystemWeb.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Cookies.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Facebook.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Google.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.OAuth.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Twitter.dll
-F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Web.Infrastructure.dll
-F:\AttendanceMvcProject\Attendance System\bin\Newtonsoft.Json.dll
-F:\AttendanceMvcProject\Attendance System\bin\Owin.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.Helpers.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.Mvc.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.Optimization.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.Razor.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Deployment.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.dll
-F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Razor.dll
-F:\AttendanceMvcProject\Attendance System\bin\WebGrease.dll
 F:\AttendanceMvcProject\Attendance System\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\AttendanceMvcProject\Attendance System\bin\System.Web.Helpers.xml
 F:\AttendanceMvcProject\Attendance System\bin\System.Web.Mvc.xml

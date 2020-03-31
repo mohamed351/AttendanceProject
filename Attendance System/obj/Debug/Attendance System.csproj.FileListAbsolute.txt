@@ -296,3 +296,106 @@ C:\Users\AhmeD-Magdy\Documents\GitHub\AttendanceMvcProject\Attendance System\obj
 C:\Users\AhmeD-Magdy\Documents\GitHub\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.csproj.CopyComplete
 C:\Users\AhmeD-Magdy\Documents\GitHub\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.dll
 C:\Users\AhmeD-Magdy\Documents\GitHub\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.pdb
+F:\AttendanceMvcProject\Attendance System\bin\ApplicationInsights.config
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\csc.exe
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\csc.exe.config
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\csc.rsp
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\csi.exe
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\csi.rsp
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.AppContext.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.Collections.Immutable.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.IO.FileSystem.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\System.Reflection.Metadata.dll
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\vbc.exe
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\vbc.exe.config
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\vbc.rsp
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\VBCSCompiler.exe
+F:\AttendanceMvcProject\Attendance System\bin\roslyn\VBCSCompiler.exe.config
+F:\AttendanceMvcProject\Attendance System\bin\Attendance System.dll.config
+F:\AttendanceMvcProject\Attendance System\bin\Attendance System.dll
+F:\AttendanceMvcProject\Attendance System\bin\Attendance System.pdb
+F:\AttendanceMvcProject\Attendance System\bin\Antlr3.Runtime.dll
+F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.dll
+F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.SqlServer.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.Agent.Intercept.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.DependencyCollector.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.Web.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.WindowsServer.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.ApplicationInsights.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Core.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Cookies.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Facebook.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Google.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.OAuth.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Twitter.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Web.Infrastructure.dll
+F:\AttendanceMvcProject\Attendance System\bin\Newtonsoft.Json.dll
+F:\AttendanceMvcProject\Attendance System\bin\Owin.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Helpers.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Mvc.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Optimization.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Razor.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Deployment.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.dll
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Razor.dll
+F:\AttendanceMvcProject\Attendance System\bin\WebGrease.dll
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Helpers.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Mvc.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Optimization.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.Razor.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Deployment.xml
+F:\AttendanceMvcProject\Attendance System\bin\System.Web.WebPages.Razor.xml
+F:\AttendanceMvcProject\Attendance System\bin\Antlr3.Runtime.pdb
+F:\AttendanceMvcProject\Attendance System\bin\Newtonsoft.Json.xml
+F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.xml
+F:\AttendanceMvcProject\Attendance System\bin\EntityFramework.SqlServer.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Core.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Facebook.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Cookies.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.OAuth.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Google.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.Twitter.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.ApplicationInsights.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.DependencyCollector.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.WindowsServer.xml
+F:\AttendanceMvcProject\Attendance System\bin\Microsoft.AI.Web.xml
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.csprojAssemblyReference.cache
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance_System.Migrations.initalmodel.resources
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance_System.Migrations.Version1.resources
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance_System.Migrations.modifiedDateinPermission.resources
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.csproj.GenerateResource.cache
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.csproj.CoreCompileInputs.cache
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.csproj.CopyComplete
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.dll
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance System.pdb
+F:\AttendanceMvcProject\Attendance System\obj\Debug\Attendance_System.Migrations.nullableAndDateTime2.resources

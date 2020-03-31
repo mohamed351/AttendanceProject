@@ -10,10 +10,10 @@ namespace Attendance_System.Models
     public class Attendance
     {
         [Key]
-        [Column(Order = 0)]
+        [Column(Order = 0,TypeName = "datetime2")]
         public DateTime Date { get; set; }
-        public DateTime Arrival { get; set; }
-        public DateTime Departure { get; set; }
+        public DateTime? Arrival { get; set; }
+        public DateTime? Departure { get; set; }
         public bool IsAbsent { get; set; }
 
         [Key]

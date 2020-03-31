@@ -54,7 +54,7 @@ namespace Attendance_System.Controllers
                 {
                     if (st.Id == at.StudentId)
                     {
-                        if (at.Arrival.TimeOfDay > Convert.ToDateTime("03-18-2020 09:00:00.400").TimeOfDay)
+                        if (at.Arrival?.TimeOfDay > Convert.ToDateTime("03-18-2020 09:00:00.400").TimeOfDay)
                         {
                             lateCount++;
                         }

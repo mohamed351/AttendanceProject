@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202003261452063_modifiedDateinPermission.Designer.cs">
       <DependentUpon>202003261452063_modifiedDateinPermission.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003311933080_nullableAndDateTime2.cs" />
+    <Compile Include="Migrations\202003311933080_nullableAndDateTime2.Designer.cs">
+      <DependentUpon>202003311933080_nullableAndDateTime2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -624,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003261452063_modifiedDateinPermission.resx">
       <DependentUpon>202003261452063_modifiedDateinPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003311933080_nullableAndDateTime2.resx">
+      <DependentUpon>202003311933080_nullableAndDateTime2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

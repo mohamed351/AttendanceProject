@@ -27,7 +27,8 @@
                 {
                     <h2>Security</h2>
                     <h4>Hello @User.Identity.GetName()</h4>
-                    <a class="btn btn-success" href="#"> Security Panel</a>
+                    @Html.ActionLink("Security-Panel", "Index", "Security", null, new { @class = "btn btn-success" })
+
 
                 }
                 else if (User.IsInRole("Admin"))

@@ -19,7 +19,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Date.Day-@item.Date.Month-@item.Date.Year</td>
+                <td>@item.Date</td>
                 @if (item.IsAbsent)
                 {
                     <td>Absent</td>
@@ -27,8 +27,8 @@
                 }
                 else
                 {
-                    <td>@item.Arrival.TimeOfDay</td>
-                    <td>@item.Departure.TimeOfDay</td>
+                    <td>@(item.Arrival?.TimeOfDay)</td>
+                    <td>@(item.Departure?.TimeOfDay)</td>
                 }
 
             </tr>

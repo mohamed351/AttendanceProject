@@ -147,6 +147,7 @@ namespace Attendance_System.Controllers
                 u.DepartmentId = viewModel.DepartmentId;
                 u.Email = viewModel.Email;
                 u.Name = viewModel.Name;
+                u.Address = viewModel.Address;
                 u.PhoneNumber = viewModel.PhoneNumber;
                 u.UserName = viewModel.UserName;
                 var deletedRoles = users.GetRoles(u.Id);

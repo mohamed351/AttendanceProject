@@ -9,14 +9,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Attendance System</title>    
-    @Styles.Render("~/Content/css")    
+    <title>@ViewBag.Title - Attendance System</title>
+    @Styles.Render("~/Content/css")
     <link href="~/Content/bootstrap-lumen.min.css" rel="stylesheet" />
 </head>
 <body>    
     <div class="banner">        
         <div class="container-main">
-            <h3>AMRY For Software Development</h3>
+            <h3>TechThesis For Software Development</h3>
             @if (!User.Identity.IsAuthenticated)
             {
                 @Html.ActionLink("LOGIN", "Login", "Account", null, new { @class = "btn btn-success" })

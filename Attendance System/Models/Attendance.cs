@@ -10,7 +10,7 @@ namespace Attendance_System.Models
     public class Attendance
     {
         [Key]
-        [Column(Order = 0,TypeName = "datetime2")]
+        [Column(Order = 0,TypeName = "date")]
         public DateTime Date { get; set; }
         public DateTime? Arrival { get; set; }
         public DateTime? Departure { get; set; }
@@ -21,5 +21,7 @@ namespace Attendance_System.Models
         [ForeignKey("ApplicationUser")]
         public string StudentId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        
     }
 }

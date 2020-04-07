@@ -3,8 +3,12 @@
     ViewBag.Title = "StudentProfile";
 }
 
+<br />
 <h2>@User.Identity.GetName() Attentance</h2>
-
+@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
+@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })
+<br />
+<br />
 <table id="tbl" class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -39,5 +43,4 @@
     </tbody>
 </table>
 
-@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
-@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })
+

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Attendance_System.Controllers
 {
@@ -27,123 +28,82 @@ namespace Attendance_System.Controllers
         }
 
 
-        // GET: Security
+    
         public ActionResult Index()
         {
-            var model = new SecurityAttendenceViewModel()
+            var paperSheet = db.Attendance.Include(async => async.ApplicationUser)
+                 .Where(a => a.Date == DateTime.Today && db.Users.Contains(a.ApplicationUser));
+
+            if (paperSheet.Count() == 0)
             {
-                Departments = db.Departments.ToList<Department>(),
-                Students = db.Users.ToList<ApplicationUser>(),
-                AttendenceTypes = new List<string>() { "Arrival", "Departure" }
-            };
-            return View(model);
+                foreach (var item in db.Users.ToList())
+                {
+                    db.Attendance.Add(new Attendance()
+                    {
+                        Date = DateTime.Now,
+                        IsAbsent = true,
+                        StudentId = item.Id
+
+                    });
+                }
+                db.SaveChanges();
+            }
+            ViewBag.Departments = new SelectList(db.Departments.ToList(),"Id", "Name");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetStudents (int? DeptId, int ?attendType)
+        {
+            if (DeptId == null && attendType == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            if (attendType == 1) {
+               List<ApplicationUser> applicationUsers= db.Attendance
+                    .Where(a => a.Arrival == null && a.Date == DateTime.Today)
+                   .Select(a => a.ApplicationUser).Where(a=>a.DepartmentId == DeptId).ToList();
+
+                return PartialView("_StudentListArrival", applicationUsers);
+            }
+            else if (attendType == 2)
+            {
+                List<ApplicationUser> applicationUsers = db.Attendance
+                    .Where(a => a.Departure == null && a.Arrival != null)
+                    .Select(a => a.ApplicationUser).Where(a => a.DepartmentId == DeptId).ToList();
+                return PartialView("_StudentListDeparture", applicationUsers);
+            }
+           
+
+            return Json("", JsonRequestBehavior.AllowGet);
+           
+           
         }
 
         [HttpPost]
-        public ActionResult _Index(int DeptId, int attendType)
+        public ActionResult ArrivalAction(string UserID)
         {
-            var users = db.Users.ToList<ApplicationUser>();
-            var studentsAttendence = db.Attendance.ToList();
-            var students = new List<ApplicationUser>();
-            var arrival = new List<ApplicationUser>();
-            var leaving = new List<ApplicationUser>();
-            var shipped = new List<ApplicationUser>();
-
-            //creating a new list of students in a specific department
-            foreach (var user in users)
+           if(UserID == null)
             {
-                if (userManger.IsInRole(user.Id, "Student") && user.DepartmentId == DeptId)
-                {
-                    students.Add(user);
-                }
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
+          Attendance attendance =  db.Attendance.SingleOrDefault(a => a.Date == DateTime.Today && a.ApplicationUser.Id == UserID);
+            attendance.Arrival = DateTime.Now;
+            attendance.IsAbsent = false;
+            db.SaveChanges();
 
-            var day = db.Attendance.FirstOrDefault(s => s.Date.Year == DateTime.Now.Year
-                    && s.Date.Month == DateTime.Now.Month && s.Date.Day == DateTime.Now.Day);
-
-            //add records for students in the attendence table for the new day
-            if (day == null)
-            {
-                foreach (var student in students)
-                {
-                    Attendance attendance = new Attendance();
-                    attendance.Date = DateTime.Now;
-                    attendance.StudentId = student.Id;
-                    attendance.IsAbsent = true;
-
-                    db.Attendance.Add(attendance);
-                    db.SaveChanges();
-                }
-            }
-
-            if (attendType == 1)    //Arrival list
-            {
-                //var stn = db.Users.Where(u => u.Department.Equals(DeptId)).ToList<ApplicationUser>();
-
-                foreach (var student in students)
-                {
-                    var std = studentsAttendence.SingleOrDefault(s => s.StudentId.Equals(student.Id) && s.IsAbsent.Equals(true));
-                    if (std != null)
-                    {
-                        arrival.Add(student);
-                    }
-                }
-                shipped = arrival;
-            }
-            else if (attendType == 2)   //Departure list
-            {
-                foreach (var student in students)
-                {
-                    var std = studentsAttendence.SingleOrDefault(s => s.StudentId.Equals(student.Id) && s.IsAbsent.Equals(false));
-                    if (std != null && std.Departure == null)
-                    {
-                        leaving.Add(student);
-                    }
-                }
-                shipped = leaving;
-            }
-
-            var model = new SecurityAttendenceViewModel()
-            {
-                Departments = db.Departments.ToList<Department>(),
-                Students = shipped,
-                AttendenceTypes = new List<string>() { "Arrival", "Departure" }
-            };
-            return PartialView(model);
+            return Json(new { status="ok" });
         }
-
         [HttpPost]
-        public ActionResult Attendence(string stdId, int attendType)
+        public ActionResult DepartureAction(string userId)
         {
-            if (ModelState.IsValid)
-            {
-                if (attendType == 1)    //set student arrival time
-                {
-                    var student = db.Attendance.Where(s => s.StudentId == stdId && s.Date.Year == DateTime.Now.Year
-                    && s.Date.Month == DateTime.Now.Month && s.Date.Day == DateTime.Now.Day).FirstOrDefault();
+            Attendance attendance = db.Attendance.SingleOrDefault(a => a.Date == DateTime.Today && a.ApplicationUser.Id == userId);
+            attendance.Departure = DateTime.Now;
+            db.SaveChanges();
 
-                    if (student != null)
-                    {
-                        student.IsAbsent = false;
-                        student.Arrival = DateTime.Now;
-                        db.SaveChanges();
-                    }
+            return Json(new { status = "ok" });
 
-                }
-                else if (attendType == 2)   //set student arrival Departure time
-                {
-                    var student = db.Attendance.Where(s => s.StudentId == stdId && s.Date.Year == DateTime.Now.Year
-                    && s.Date.Month == DateTime.Now.Month && s.Date.Day == DateTime.Now.Day).FirstOrDefault();
-
-                    if (student != null)
-                    {
-                        student.Departure = DateTime.Now;
-                        db.Attendance.AddOrUpdate(student);
-                        db.SaveChanges();
-                    }
-                }
-            }
-            return Content("done");
         }
+   
     }
 }

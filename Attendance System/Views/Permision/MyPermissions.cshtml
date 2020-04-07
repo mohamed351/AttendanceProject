@@ -5,6 +5,12 @@
 
 <h2>MyPermissions</h2>
 
+@Html.ActionLink("Attentance", "studentprofile", "Permision", null, new { @class = "btn btn-success" })
+@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })
+<br />
+<br />
+<br />
+<br />
 <table id="tbl" class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -27,7 +33,14 @@
                 <td>@item.CauseOfAbsence</td>
                 <td>@item.IsApproved</td>
                 <td>@item.ApprovementDate</td>
-                <td>@item.Admin</td>
+                <td>
+                    @if (item.AdminUser != null)
+                    {
+                        <p>@item.AdminUser.Name</p>
+                    }
+
+
+                </td>
             </tr>
         }
 
@@ -35,5 +48,4 @@
 
     </tbody>
 </table>
-@Html.ActionLink("Attentance", "studentprofile", "users", null, new { @class = "btn btn-success" })
-@Html.ActionLink("Request Permission", "Requestpermission", "Permision", null, new { @class = "btn btn-success" })
+

@@ -42,9 +42,13 @@
                 {
                     <h2>Student</h2>
                     <h4>Hello @User.Identity.GetName()</h4>
-                    <a class="btn btn-success" href="/users/studentprofile">My Attentance</a>
+
+                    @*<a class="btn btn-success" href="/users/studentprofile">My Attentance</a>*@
+                    @Html.ActionLink("My Attentance", "StudentProfile", "Permision", null,new { @class="btn btn-success"})
                     <a class="btn btn-success" href="/Permision/MyPermissions">My Permissions</a>
-                    <a class="btn btn-success" href="/Permision/Requestpermission">Request Permission</a>
+                    <br />
+                    <br />
+                    <a class="btn  btn-success" style="width:auto" href="/Permision/Requestpermission">Request Permission...</a>
                 }
             }
         </div>

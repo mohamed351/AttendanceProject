@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Attendance_System.Models.ApplicationUser>
+
+<<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="padding: 10px;">Students List</h3>
+    </div>
+    <div class="list-group" id="students" style="padding: 10px;">
+        @foreach (var student in Model)
+        {
+            <a href="#" id="btn-arrival" class="list-group-item getStd" stdId="@student.Id">@student.Name</a>
+        }
+    </div>
+</div>
+
+
+

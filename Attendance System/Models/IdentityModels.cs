@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Attendance_System.Models
 {
@@ -21,6 +22,15 @@ namespace Attendance_System.Models
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
 
+      
+        [InverseProperty("ApplicationUser")]
+        public List<Permission> Permissions { get; set; }
+        [InverseProperty("AdminUser")]
+        public List<Permission> PermissionAdmin { get; set; }
+
+        public List<Attendance> Attendances { get; set; }
+
+     
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -45,6 +55,13 @@ namespace Attendance_System.Models
             return new ApplicationDbContext();
         }
 
-    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+         
+        }
+
+
     }
 }

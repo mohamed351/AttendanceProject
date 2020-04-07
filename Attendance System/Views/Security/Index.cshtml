@@ -5,6 +5,10 @@
 }
 
 <h2>Attendence</h2>
+@section styles{
+
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
+}
 
 <br />
 <div class="jumbotron" style="padding: 15px 20px 0 20px !important; margin-bottom: 0 !important;">
@@ -13,21 +17,13 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="form-group">
-                    @*<label class="control-label">Department</label>*@
-                    <select name="DeptId" id="DeptId" class="form-control ">
-                        @{
-                            foreach (var department in Model.Departments)
-                            {
-                                <option value="@department.Id">@department.Name</option>
-                            }
-                        }
-                    </select>
+                    @Html.DropDownList("Departments", null, new { @class = "form-control", id = "departmentdropDown" })
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    @*<label class="control-label col-md-push-5">Attendence Type</label>*@
-                    <select name="attendType" id="attendType" class="form-control">
+
+                    <select id="attendType" class="form-control">
                         <option value="1">Arrival</option>
                         <option value="2">Departue</option>
                     </select>
@@ -45,42 +41,58 @@
 <div id="stdList"></div>
 
 @section scripts{
+    <script src="~/Scripts/sweetalert.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $("#btnSubmit").on("click", function () {
-                var formData = new FormData();
-                formData.append("DeptId", $("#DeptId").val());
-                formData.append("attendType", $("#attendType").val());
-                $.ajax({
-                    url: "/Security/_Index",
-                    type: 'POST',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    success: function (response) {
-                        $("#stdList").html(response);
 
-                        $("#students .getStd").on("click", function () {
-                            var std = $(this);
-                            var formData = new FormData();
-                            formData.append("stdId", $(this).attr("stdId"));
-                            formData.append("attendType", $("#attendType").val());
-                            $.ajax({
-                                url: "/Security/Attendence",
-                                type: 'POST',
-                                cache: false,
-                                contentType: false,
-                                processData: false,
-                                data: formData,
-                                success: function () {
-                                    std.remove();
-                                }
-                            });
-                        });
+        $(document).ready(function () {
+
+            $("#btnSubmit").on("click", function () {
+
+                $.ajax({
+                    url: "/Security/GetStudents",
+                    data: { DeptId: $("#departmentdropDown").val(), attendType: $("#attendType").val() },
+                    success: function (data) {
+                        $("#stdList").html(data);
+                    }
+
+                });
+            });
+
+            $("#stdList").on("click", "#btn-arrival", function () {
+                var usei = $(this).attr("stdId");
+                var element = $(this);
+                $.ajax({
+                    url: "/Security/ArrivalAction",
+                    data: { UserID: usei },
+                    method: "POST",
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            swal("Good job!", "You clicked the button!", "success");
+                        }
+                        element.remove();
                     }
                 });
             });
+            $("#stdList").on("click", "#btn-departure", function () {
+                var usei = $(this).attr("stdId");
+                var element = $(this);
+
+                $.ajax({
+                    url: "/Security/DepartureAction",
+                    data: { UserID: usei },
+                    method: "POST",
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            swal("Good job!", "You clicked the button!", "success");
+                        }
+                        element.remove();
+                    }
+                });
+
+            });
+
+
+
         });
     </script>
 }

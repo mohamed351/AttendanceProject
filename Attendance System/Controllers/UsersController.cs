@@ -12,6 +12,7 @@ using System.Data.Entity;
 namespace Attendance_System.Controllers
 {
     [HandleError]
+    [Authorize(Roles ="Admin")]
     public class UsersController : Controller
     {
         UserManager<ApplicationUser> users;
@@ -53,6 +54,8 @@ namespace Attendance_System.Controllers
                 throw new HttpException(400, "Bad Request");
             }
             var users = context.Users.Include(a => a.Roles)
+                .Include(a=>a.Permissions)
+                .Include(a=>a.Attendances)
             .Include(a => a.Department).FirstOrDefault(a => a.Id == ID);
             if (users == null)
             {
@@ -206,7 +209,7 @@ namespace Attendance_System.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirm(string ID)
         {
-
+            
             if (ID == null)
             {
                 throw new HttpException(400, "Bad Request");
@@ -225,15 +228,7 @@ namespace Attendance_System.Controllers
 
 
 
-        [Authorize(Roles = "Student")]
-        public ActionResult StudentProfile()
-        {
-            var userID = User.Identity.GetUserId();
-            ViewBag.id = userID;
-
-            IEnumerable<Attendance> attendances = context.Attendance.Where(a => a.StudentId == userID).ToList();
-            return View(attendances);
-        }
+     
 
         
     }

@@ -7,15 +7,23 @@
     <link href="~/Content/themes/base/all.css" rel="stylesheet" />
     <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
 }
-
+<h2 class="mt-5">RequestPermission</h2>
+<h4 class="mt-5">Permission Request</h4>
+<hr />
+@Html.ActionLink("My Attentance", "StudentProfile", "Permision", null, new { @class = "btn btn-success" })
+@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
+<br />
+<br />
+<hr />
 
 @using (Html.BeginForm("RequestPermission", "permision", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <h2>RequestPermission</h2>
+
     <div class="form-horizontal">
-        <h4>Permission Request</h4>
-        <hr />
+
+
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UserId)
 
@@ -42,8 +50,7 @@
         </div>
     </div>
 }
-@Html.ActionLink("Attentance", "studentprofile", "users", null, new { @class = "btn btn-success" })
-@Html.ActionLink("My Permissions", "MyPermissions", "Permision", null, new { @class = "btn btn-success" })
+
 
 @section Scripts
 {

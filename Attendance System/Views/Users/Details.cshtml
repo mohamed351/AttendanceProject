@@ -2,12 +2,23 @@
 @{
     ViewBag.Title = "Details";
 }
+@section styles{
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link href="~/Content/themes/base/accordion.css" rel="stylesheet" />
+ <style>
+     #permissionsAccordtion div {
+         height:100%;
+     }
 
+
+    </style>
+
+}
 <ul class="nav nav-tabs" style="margin-top:25px">
     <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Profile</a></li>
     @if (Model.Department != null)
     {
-    <li class=""><a href="#Department" data-toggle="tab" aria-expanded="false">Department</a></li>
+        <li class=""><a href="#Department" data-toggle="tab" aria-expanded="false">Department</a></li>
     }
     @if (ViewBag.RoleName == "Student")
     {
@@ -17,7 +28,7 @@
 
 </ul>
 <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="profile">  
+    <div class="tab-pane fade active in" id="profile">
 
         <div class="panel panel-primary mt-5">
             <div class="panel-heading">
@@ -77,16 +88,16 @@
                         Role :
                     </dt>
 
-                   <dd>
-                       @ViewBag.RoleName
-                   </dd>
+                    <dd>
+                        @ViewBag.RoleName
+                    </dd>
 
 
 
 
-                    
 
-                   
+
+
 
                 </dl>
             </div>
@@ -95,43 +106,43 @@
     </div>
     @if (Model.Department != null)
     {
-    <div class="tab-pane fade" id="Department">
+        <div class="tab-pane fade" id="Department">
 
-        <div class="panel panel-primary mt-5">
-            <div class="panel-heading">
-                <h3 class="panel-title"> Department : @Model.Department.Name</h3>
+            <div class="panel panel-primary mt-5">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> Department : @Model.Department.Name</h3>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Department.Name) :
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Department.Name)
+                        </dd>
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Department.NickName) :
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Department.NickName)
+                        </dd>
+
+
+                        <dt>
+                            
+                        </dt>
+
+
+                    </dl>
+                </div>
             </div>
-            <div class="panel-body">
-                <dl class="dl-horizontal">
-                  
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Department.Name) :
-                    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Department.Name)
-                    </dd>
-
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Department.NickName) :
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Department.NickName)
-                    </dd>
-
-                   
-                    <dt>
-                       <a class="btn btn-success"> Students</a>
-                    </dt>
-
-
-                </dl>
-            </div>
         </div>
-        
-       </div>
 
     }
 
@@ -142,10 +153,66 @@
             <div class="panel-heading">
                 <h3 class="panel-title"> Permissions</h3>
             </div>
-            <div class="panel-body">
-             
-                Not Implmented
-               
+            <div class="panel-body" style="height: 500px !important">
+
+                <div id="permissionsAccordtion" style="height: 500px !important">
+
+                    @foreach (var item in Model.Permissions)
+                    {
+                    <h3>@(item.PermissionDate?.ToShortDateString())</h3>
+                    <div>
+                      
+                            <dl class="dl-horizontal">
+
+                                <dt>
+                                    permission Date
+                                </dt>
+
+                                <dd>
+                                    @(item.PermissionDate?.ToShortDateString())
+                                </dd>
+
+
+                                <dt>
+                                   ApproveDate :
+                                </dt>
+
+                                <dd>
+                                   @if(item.ApprovementDate != null)
+                                   {
+                                       @item.ApprovementDate
+                                   }
+                                   else
+                                   {
+                                       <p> not approved yet </p>
+                                   }
+
+                                </dd>
+
+
+                                <dt>
+                                    IsApproved
+                                </dt>
+
+                                <dd>
+                                    @item.IsApproved
+                                </dd>
+
+                                <dt>
+                                    Cause
+                                </dt>
+
+                                <dd>
+                                    @item.CauseOfAbsence
+                                </dd>
+
+
+                            </dl>
+                       
+                    </div>
+                    }
+                </div>
+
             </div>
         </div>
 
@@ -160,7 +227,22 @@
             </div>
             <div class="panel-body">
 
-                Not Implmented
+              <table class="table table-bordered">
+                  <tr >
+                      <th>Arrival</th>
+                      <th>Departure</th>
+                      <td>IsAbsent</td>
+                  </tr>
+                  @foreach(var item in Model.Attendances)
+                  {
+                      <tr>
+                          <td>@(item?.Arrival)</td>
+                          <td>@(item?.Departure)</td>
+                          <td>@item.IsAbsent</td>
+                          
+                      </tr>
+                  }
+              </table>
 
             </div>
         </div>
@@ -168,4 +250,11 @@
     </div>
 
 </div>
-
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#permissionsAccordtion").accordion({ active: false, collapsible: true });
+        });
+    </script>
+}

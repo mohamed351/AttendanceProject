@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace Attendance_System.Controllers
 {
@@ -16,7 +17,7 @@ namespace Attendance_System.Controllers
         // GET: Permision
         public ActionResult Index()
         {
-            ViewBag.pers = db.Permissions.ToList();
+            ViewBag.pers = db.Permissions.Include(async=>async.ApplicationUser).ToList();
             ViewBag.users = db.Users.ToList();
             return View();
         }
@@ -27,7 +28,7 @@ namespace Attendance_System.Controllers
             int perid = Convert.ToInt32(perId);
             var permission = db.Permissions.FirstOrDefault(per => per.Id == perid);
             permission.IsApproved = true;
-            permission.Admin = User.Identity.Name;
+            permission.Admin = User.Identity.GetUserId(); // not name 
             permission.ApprovementDate = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction(nameof(Index));
@@ -95,7 +96,7 @@ namespace Attendance_System.Controllers
             var userID = User.Identity.GetUserId();
             ViewBag.id = userID;
 
-            IEnumerable<Permission> permissions = db.Permissions.Where(a => a.UserId == userID).ToList();
+            IEnumerable<Permission> permissions = db.Permissions.Include(async=>async.AdminUser).Where(a => a.UserId == userID).ToList();
             return View(permissions);
         }
 
@@ -112,6 +113,16 @@ namespace Attendance_System.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction(nameof(SendPermission));
+        }
+
+        [Authorize(Roles = "Student")]
+        public ActionResult StudentProfile()
+        {
+            var userID = User.Identity.GetUserId();
+            ViewBag.id = userID;
+
+            IEnumerable<Attendance> attendances = db.Attendance.Where(a => a.StudentId == userID).ToList();
+            return View(attendances);
         }
     }
 }

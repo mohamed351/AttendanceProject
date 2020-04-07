@@ -7,13 +7,13 @@ namespace Attendance_System.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class modifiedDateinPermission : IMigrationMetadata
+    public sealed partial class ConvertToDate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(modifiedDateinPermission));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ConvertToDate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003261452063_modifiedDateinPermission"; }
+            get { return "202004062221039_ConvertToDate"; }
         }
         
         string IMigrationMetadata.Source

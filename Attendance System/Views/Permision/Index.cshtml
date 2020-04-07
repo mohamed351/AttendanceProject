@@ -48,11 +48,11 @@
                             }
                         </td>
                         <td>@per.SendingDate</td>
-                        <td>@per.PermissionDate</td>
+                        <td>@per.PermissionDate</td>    
                         <td>@per.ApprovementDate</td>
                         @if(@per.Admin != null)
                         {
-                            <td>@per.Admin</td>
+                            <td>@per.AdminUser.Name</td>
                         }
                     </tr>
                 }
